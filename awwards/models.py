@@ -29,11 +29,11 @@ class Profile(models.Model):
  
 class Project(models.Model):
     title = models.CharField(max_length=60)
+    project_posts = HTMLField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
-    post = HTMLField()
     project_pic = models.ImageField(upload_to='project/', blank=True)
-    project_link = models.URLField(max_length=250)
+    project_url = models.URLField(max_length=250)
     pub_date = models.DateTimeField(auto_now_add=True)
 
 

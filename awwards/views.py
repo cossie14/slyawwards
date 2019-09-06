@@ -26,18 +26,7 @@ def index(request):
 
 
 
-def search_results(request):
 
-    if 'article' in request.GET and request.GET["article"]:
-        search_term = request.GET.get("article")
-        searched_articles = Article.search_by_title(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"articles": searched_articles})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -46,6 +35,7 @@ def profile(request):
         form = NewsProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
+        
             profile.username = current_user
             profile.user_id=current_user.id
             profile.save()
@@ -53,26 +43,32 @@ def profile(request):
     else:
         form = NewsProfileForm()
     return render(request, 'profile.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def user(request):
+    user = request.user
+    profile = Profile.objects.get(username=user)
+    projects=Project.objects.filter(id=user.id)
+    return render(request, 'project.html',{"profile":profile,"projects":projects})
+
+
+
 @login_required(login_url='/accounts/login/')
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
         form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.editor = current_user
-            article.save()
+            project = form.save(commit=False)
+            project.editor = current_user
+            project.save()
         return redirect('user')
 
     else:
         form = NewProjectForm()
     return render(request, 'new-article.html', {"form": form}) 
-@login_required(login_url='/accounts/login/')
-def user(request):
-    user = request.user
-    profile = Profile.objects.get(username=user)
-    posts=Project.objects.filter(id=user.id)
-    return render(request, 'user-post.html',{"profile":profile,"posts":posts})
+
+
 @login_required(login_url='/accounts/login/')
 def comment(request):
     current_user = request.user
@@ -162,6 +158,9 @@ class UserDescription(APIView):
         user = self.get_user(pk)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 @login_required(login_url='/accounts/login/')
 def newsletter(request):
     name = request.POST.get('your_name')
@@ -172,3 +171,18 @@ def newsletter(request):
     send_welcome_email(name, email)
     data = {'success': 'You have been successfully added to mailing list'}
     return JsonResponse(data)
+
+
+
+def search_results(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"articles": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
