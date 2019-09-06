@@ -31,7 +31,6 @@ class Project(models.Model):
     title = models.CharField(max_length=60)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
-
     post = HTMLField()
     project_pic = models.ImageField(upload_to='project/', blank=True)
     project_link = models.URLField(max_length=250)
