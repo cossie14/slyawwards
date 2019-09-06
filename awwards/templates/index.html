@@ -31,13 +31,13 @@
       </div>
       <div class="col-md-4 responsive ">
         <div class="row">
-          <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
+          <!-- <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a> -->
         </div><br>
           <div class="row">
             <div class="card" style="width: 18rem;">
-              <div class="card-header">
+              <!-- <div class="card-header">
                 Stories
-              </div>
+              </div> -->
 
               <ul class="list-group list-group-flush hide">
                 {% for user in users %}
@@ -50,7 +50,7 @@
           <div class="row">
             <div class="card" style="width: 18rem;">
               <div class="card-header">
-                Explore More
+                <!-- Explore More -->
               </div>
               <ul class="list-group list-group-flush hide">
                 {% for user in views %}
