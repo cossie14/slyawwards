@@ -4,22 +4,20 @@
 {% block content %}
 {{block.super}}
 <br><br>
-  <!-- posts from database come here -->
   <div class="container">
     <div class="row " >
       <div  class="col-md-8 col-sm-3 work" >
-        {% for projects in p %}
+        {% for projects in post%}
         <div class="photo card">
 
           <div class="card-header">
-            <h5 id='red' class="card-title"><b>{{post.title}}</b></h5>
+            <h5 id='red' class="card-title"><b>{{project_post.title}}</b></h5>
           </div>
-          <img src="{{post.project_image.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
+          <img src="{{posts.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
 
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><i  class="far fa-comment" ></i></a>    <i class="far fa-heart">{{post.like}}</i></li>
-              <li class="list-group-item"><b>{{user.username}}</b> {% autoescape on%}{{post.image_caption|safe}}{% endautoescape %}</li>
+              <li class="list-group-item"><b>{{user.username}}</b> {% autoescape on%}{{project_post.pic_caption|safe}}{% endautoescape %}</li>
 
             </ul>
           </div>
@@ -27,13 +25,13 @@
 
         {% empty %}
           <div class="row">
-            <h2>Nothing here. </h2>
+            <h2>Nothing here yet </h2>
           </div>
         {% endfor %}
       </div>
       <div class="col-md-4 responsive ">
         <div class="row">
-          <img style=" border-radius:25px"src="{{profile.profile_image.url}}" alt="hamna" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
+          <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="hamna" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
         </div><br>
           <div class="row">
             <div class="card" style="width: 18rem;">
@@ -52,7 +50,7 @@
           <div class="row">
             <div class="card" style="width: 18rem;">
               <div class="card-header">
-                Suggestions for you
+                Explore More
               </div>
               <ul class="list-group list-group-flush hide">
                 {% for user in views %}
@@ -66,8 +64,5 @@
     </div>
 
   </div>
-  <style>
-  body{font-family :'Gentium Basic', serif;
-  }
-  </style>
+
 {% endblock %}
