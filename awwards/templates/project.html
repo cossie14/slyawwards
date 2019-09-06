@@ -1,0 +1,93 @@
+
+{%extends 'base.html'%}
+{%load static%}
+{% block content %}
+{{block.super}}
+<br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <img style="width:50%;   display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;height: 50%;"src="{{profile.profile_pic.url}}" alt="bikcha" width="150px" height="150px" class="rounded-circle">
+      </div>
+      <div class="col-md-6 col-sm-12">
+      <div class="yass">
+        <div class="ok">
+          <b>{{profile.username}}</b>
+        </div>
+        <div class="button">
+          <a href="{% url 'profile'%}" style="border:1px solid lightgrey;border-radius:2px;color:black;text-decoration:none">Edit profile</a>
+          <div class="cog">
+                <i class="fas fa-cog"></i>
+              </div>
+        </div>
+        
+      </div><br><br>
+      <h1>your bio</h1>
+    {{profile.bio}}
+      </div>
+      <div class="container">
+        <div class="row " >
+          <div  class="col-md-8 col-sm-3 work" >
+            {% for post in post%}
+            <div class="photo card">
+    
+              <div class="card-header">
+                <h5 id='red' class="card-title"><b>{{post.title}}</b></h5>
+              </div>
+              <img src="{{post.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
+    
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>{{user.username}}</b> {% autoescape on%}{{post.description|safe}}{% endautoescape %}</li>
+    
+                </ul>
+              </div>
+            </div><br>
+    
+            {% empty %}
+              <div class="row">
+                <h2>Nothing here yet </h2>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="col-md-4 responsive ">
+            <div class="row">
+              <img style=" border-radius:25px"src="{{profile.profile_pic.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
+            </div><br>
+              <div class="row">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    Stories
+                  </div>
+    
+                  <ul class="list-group list-group-flush hide">
+                    {% for user in users %}
+                    <li class="list-group-item responsive">{{user.username}}</li>
+                    {%endfor%}
+                  </ul>
+    
+                </div>
+              </div><br><br>
+              <div class="row">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-header">
+                    Explore More
+                  </div>
+                  <ul class="list-group list-group-flush hide">
+                    {% for user in views %}
+                    <li class="list-group-item responsive">{{user.username}}
+                      <a href="/profile/user/{{user.id}}"><button type="button" name="button">View profile</button></a></li>
+                    {%endfor%}
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+    
+      </div>
+    
+    {% endblock %}
+    

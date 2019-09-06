@@ -18,11 +18,11 @@ from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def index(request):
     user =request.user
-    projects = Project.objects.all()
-    profile = Profile.objects.get(username=user)
+    post = Project.objects.all()
+    profile = Profile.objects.all()
     users = Profile.objects.all()
     views = Profile.objects.all()
-    return render(request, 'index.html', {"posts":posts,"profile":profile, "users":users,})
+    return render(request, 'index.html', {"post":post,"profile":profile, "users":users,})
 
 
 
@@ -66,7 +66,7 @@ def new_project(request):
 
     else:
         form = NewProjectForm()
-    return render(request, 'new-article.html', {"form": form}) 
+    return render(request, 'new-project.html', {"form": form}) 
 
 
 @login_required(login_url='/accounts/login/')
@@ -97,6 +97,8 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class ProjectDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
     def get_project(self, pk):
@@ -109,6 +111,7 @@ class ProjectDescription(APIView):
         project = self.get_project(pk)
         serializers = AwardSerializer(project)
         return Response(serializers.data)
+
     def put(self, request, pk, format=None):
         project = self.get_project(pk)
         serializers = AwardSerializer(project, request.data)
@@ -117,6 +120,7 @@ class ProjectDescription(APIView):
             return Response(serializers.data)
         else:
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def delete(self, request, pk, format=None):
         project = self.get_project(pk)
         project.delete()
@@ -134,6 +138,7 @@ class UserList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        
 class UserDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
     def get_user(self, pk):
