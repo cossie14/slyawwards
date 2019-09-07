@@ -15,7 +15,14 @@
             <h5 id='red' class="card-title"><b>{{post.title}}</b></h5>
           </div>
           <img style="width:50%; border-radius:25px " src="{{post.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
-        
+          <div class="card-img-overlay">
+            <br>
+            <br>
+            <br>
+            <br>
+              <a href="/project/{{user.id}}"><p class="card-text ">Rate</p></a>
+          </div>
+
       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"style="padding:0 4px;flex: 25%;">
       </div>
     </div>
@@ -30,7 +37,7 @@
     </style>
   
     
-    <h2>Rate</h2>
+    <h2></h2>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
@@ -55,7 +62,7 @@
       </div>
       <div class="col-md-4 responsive ">
         <div class="row">
-          <!-- <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a> -->
+          <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
         </div><br>
           <div class="row">
             <div class="card" style="width: 18rem;">
@@ -86,7 +93,7 @@
           </div>
       </div>
   
-  
+  </div>
   
    
 
