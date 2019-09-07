@@ -30,7 +30,7 @@
                   </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="{%url 'index'%}">Syawwards</a>
+                <a href="{%url 'index'%}">Home</a>
               </li>
               <li>
                 <a href="/accounts/password/change">Change Password</a>
@@ -39,12 +39,14 @@
                 <a href="{%url 'profile'%}">Edit profile</a>
               </li>
               <li>
+                  <a href="{%url 'user'%}">Check profile</a>
+                </li>
+              <li>
                 <a href="{%url 'newproject'%}">Create Project</a>
   
               </li>
-              <li>
-                <a href="{%url 'user'%}">Check profile</a>
-              </li>
+              
+           
               <li>
                 <a href="/logout">Logout</a>
               </li>
@@ -55,10 +57,14 @@
         <li>
           <a class='btn btn-default' href="/accounts/login">Login</a>
         </li>
-  
+       
         {% endif %}
+    
       </div>
-  
+      <div class="image">
+
+          <img src="https://media0.giphy.com/media/LT1Pq74cXuNQxyUmLk/giphy.gif?cid=790b7611015d947eea2134701a7dbc1ed91264d6783bf345&rid=giphy.gif" alt="globe" style="width:100%; height:400px">
+                  </div>
     </div>
   </nav>
   

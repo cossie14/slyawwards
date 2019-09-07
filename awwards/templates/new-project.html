@@ -20,11 +20,11 @@
 <body>
   <div class="container">
     <h1 class="text-center" style="font-family:'Lobster Two',sans-serif">Projects</h1>
-    <form  action="{%url 'newsarticle'%}" method="post" enctype="multipart/form-data">
+    <form  action="{%url 'newproject'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
 
       {% bootstrap_form form %}
-      <input type="submit" class="btn btn-success btn-lg" value="Post">
+      <input type="submit" class="btn btn-success btn-lg" value="share">
     </form>
   </div>
 
