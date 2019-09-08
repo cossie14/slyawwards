@@ -60,6 +60,34 @@ class Project(models.Model):
         project = cls.objects.filter(title__title__icontains=search_term)
         return project
 
+
+class Rates(models.Model):
+    design = models.CharField(max_length=30)
+    usability = models.CharField(max_length=8)
+    content = models.ForeignKey(Project,related_name='rate',null=True)
+    score = models.FloatField(max_length=8)
+
+
+
+    def __str__(self):
+        return self.design
+
+    class Meta:
+        ordering = ['-id']
+
+    def save_rate(self):
+        self.save()
+
+    @classmethod
+    def get_rate(cls, profile):
+        rate = Rate.objects.filter(Profile__pk = profile)
+        return rate
+    
+    @classmethod
+    def get_all_rating(cls):
+        rating = Rate.objects.all()
+        return rating
+
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField()
