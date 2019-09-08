@@ -75,17 +75,17 @@ class Rates(models.Model):
     class Meta:
         ordering = ['-id']
 
-    def save_rate(self):
+    def save_rates(self):
         self.save()
 
     @classmethod
-    def get_rate(cls, profile):
-        rate = Rate.objects.filter(Profile__pk = profile)
-        return rate
+    def get_rates(cls, profile):
+        rate = Rates.objects.filter(Profile__pk = profile)
+        return rates
     
     @classmethod
     def get_all_rating(cls):
-        rating = Rate.objects.all()
+        rating = Rates.objects.all()
         return rating
 
 class NewsLetterRecipients(models.Model):
