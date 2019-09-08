@@ -12,7 +12,7 @@ from .serializer import AwardSerializer,UserSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 from django.contrib.auth.decorators import login_required
-from .forms import NewProjectForm, NewsLetterForm, NewsProfileForm
+from .forms import NewProjectForm, NewsLetterForm, NewsProfileForm 
 from django.contrib.auth.models import User
 
 @login_required(login_url='/accounts/login/')
@@ -196,6 +196,4 @@ def search_results(request):
 
 
 
-def rates(request):
-    profile = User.objects.get(username=request.user)
-    
+

@@ -10,13 +10,11 @@ class NewProjectForm(forms.ModelForm):
 class NewsLetterForm(forms.Form):
     your_name = forms.CharField(label='First Name',max_length=30)
     email = forms.EmailField(label='Email')
-
-# class RatesForm(forms.ModelForm):
+# class RateForm(forms.ModelForm):
 #     class Meta:
-#         model =Rates
-#         exclude= ['user','project']
-
-
+#         model = Project
+#         fields = ('design','usability','content')
+# ©
       
 class NewsProfileForm(forms.ModelForm):
      class Meta:

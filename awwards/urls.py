@@ -16,6 +16,7 @@ urlpatterns=[
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^api/profile/', views.UserList.as_view()),
     url(r'^api/project/', views.ProjectList.as_view()),
+
     url(r'^project/',views.new_project,name ='newproject'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter')
 ]
