@@ -33,7 +33,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
     project_pic = models.ImageField(upload_to='project/', blank=True)
-    url = models.URLField(max_length=250)
+    project_url = models.URLField(max_length=250)
     pub_date = models.DateTimeField(auto_now_add=True)
 
 
