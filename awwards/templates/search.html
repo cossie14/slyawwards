@@ -2,221 +2,124 @@
 {%extends 'base.html'%}
 {% block content %}
 <div class="container">
+  <div class="row"style="padding:0 4px;">
 
-  <div class="row">
-    {% if images%}
-      <h2>Found {{ images|length }} results in category '{{message}}'</h2>
-    {% else %}
-      <h2> Found 0 images for the search term {{message}}</h2>
-    {% endif %}
+    {% for post in post%}
+    
+    <div class="photo card">
 
+      <div class="card-header">
+        <h5 id='red' class="card-title"><b>{{post.title}}</b></h5>
+      </div>
+      <img style="width:50%; border-radius:25px " src="{{post.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
+      <div class="card-img-overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+          <a href="/project/{{user.id}}"><p class="card-text ">Rate <br>Visit site  </p></a>
+      </div>
+
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"style="padding:0 4px;flex: 25%;">
   </div>
-  <div class="container">
-      <div class="row " >
-        <div  class="col-md-8 col-sm-3 work" >
-          {% for post in post%}
-          <div class="photo card">
-  
-            <div class="card-header">
-              <h5 id='red' class="card-title"><b>{{post.title}}</b></h5>
-            </div>
-            <img src="{{post.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
-          
-  <style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  /* body {
-    font-family: Arial;
-    margin: 0 auto; /* Center website */
-    max-width: 800px; /* Max width */
-    padding: 20px;
-  } */
-  
-  .heading {
-    font-size: 25px;
-    margin-right: 25px;
-  }
-  
-  .fa {
-    font-size: 25px;
-  }
-  
-  .checked {
-    color: orange;
-  }
-  
-  /* Three column layout */
-  .side {
-    float: left;
-    width: 15%;
-    margin-top:10px;
-  }
-  
-  .middle {
-    margin-top:10px;
-    float: left;
-    width: 70%;
-  }
-  
-  /* Place text to the right */
-  .right {
-    text-align: right;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* The bar container */
-  .bar-container {
-    width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    color: white;
-  }
-  
-  /* Individual bars */
-  .bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
-  .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
-  .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
-  .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
-  .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
-  
-  /* Responsive layout - make the columns stack on top of each other instead of next to each other */
-  @media (max-width: 400px) {
-    .side, .middle {
-      width: 100%;
-    }
-    .right {
-      display: none;
-    }
-  }
-  </style>
-  </head>
-  <body>
-  
-  <span class="heading">User Rating</span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star"></span>
-  <p>4.1 average based on 254 reviews.</p>
-  <hr style="border:3px solid #f1f1f1">
-  
-  <div class="row">
-    <div class="side">
-      <div>5 star</div>
-    </div>
-    <div class="middle">
-      <div class="bar-container">
-        <div class="bar-5"></div>
+</div>
+
+
+<!-- Font Awesome Icon Library -->
+
+<style>
+.checked {
+  color: darkblue;
+}
+</style>
+
+
+<h2></h2>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+
+
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>{{user.username}}</b> {% autoescape on%}{{post.description|safe}}{% endautoescape %}</li>
+
+        </ul>
       </div>
-    </div>
-    <div class="side right">
-      <div>150</div>
-    </div>
-    <div class="side">
-      <div>4 star</div>
-    </div>
-    <div class="middle">
-      <div class="bar-container">
-        <div class="bar-4"></div>
+    </div><br>
+
+    {% empty %}
+      <div class="row">
+        <h2>Nothing here yet </h2>
       </div>
-    </div>
-    <div class="side right">
-      <div>63</div>
-    </div>
-    <div class="side">
-      <div>3 star</div>
-    </div>
-    <div class="middle">
-      <div class="bar-container">
-        <div class="bar-3"></div>
-      </div>
-    </div>
-    <div class="side right">
-      <div>15</div>
-    </div>
-    <div class="side">
-      <div>2 star</div>
-    </div>
-    <div class="middle">
-      <div class="bar-container">
-        <div class="bar-2"></div>
-      </div>
-    </div>
-    <div class="side right">
-      <div>6</div>
-    </div>
-    <div class="side">
-      <div>1 star</div>
-    </div>
-    <div class="middle">
-      <div class="bar-container">
-        <div class="bar-1"></div>
-      </div>
-    </div>
-    <div class="side right">
-      <div>20</div>
-    </div>
+    {% endfor %}
   </div>
-  
-  
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>{{user.username}}</b> {% autoescape on%}{{post.description|safe}}{% endautoescape %}</li>
-  
-              </ul>
-            </div>
-          </div><br>
-  
-          {% empty %}
-            <div class="row">
-              <h2>Nothing here yet </h2>
-            </div>
-          {% endfor %}
+  <div class="col-md-4 responsive ">
+    <div class="row">
+      <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a>
+    </div><br>
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+          <!-- <div class="card-header">
+            Stories
+          </div> -->
+
+          <ul class="list-group list-group-flush hide">
+            {% for user in users %}
+            <li class="list-group-item responsive">{{user.username}}</li>
+            {%endfor%}
+          </ul>
+
         </div>
-        <div class="col-md-4 responsive ">
-          <div class="row">
-            <!-- <img style=" border-radius:25px"src="{{profile.profile_picture.url}}" alt="yes" height="50px" width="50px" class="rounded-circle"> <a href="{% url 'user'%}"><p style="color:black;font-weight:bolder;text-decoration:none;"><b>{{user.username}}</b></p></a> -->
-          </div><br>
-            <div class="row">
-              <div class="card" style="width: 18rem;">
-                <!-- <div class="card-header">
-                  Stories
-                </div> -->
-  
-                <ul class="list-group list-group-flush hide">
-                  {% for user in users %}
-                  <li class="list-group-item responsive">{{user.username}}</li>
-                  {%endfor%}
-                </ul>
-  
-              </div>
-            </div><br><br>
-            <div class="row">
-              <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                  <!-- Explore More -->
-                </div>
-                <ul class="list-group list-group-flush hide">
-                  {% for user in views %}
-                  <li class="list-group-item responsive">{{user.username}}
-                    <a href="/profile/user/{{user.id}}"><button type="button" name="button">Check profile</button></a></li>
-                  {%endfor%}
-                </ul>
-              </div>
-            </div>
+      </div><br><br>
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <!-- Explore More -->
+          </div>
+          <ul class="list-group list-group-flush hide">
+            {% for user in views %}
+            <li class="list-group-item responsive">{{user.username}}
+              <a href="/profile/user/{{user.id}}"><button type="button" name="button">Check profile</button></a></li>
+            {%endfor%}
+          </ul>
         </div>
       </div>
-  
-    </div>
-  
+  </div>
+
+</div>
+
+
+
+
+<style>
+.footer {
+position: ;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: darkblue;
+color: white;
+text-align: center;
+}
+</style>
+
+
+
+<div class="footer">
+<ul class="list-unstyled text-small">
+  <h1>APIs</h1>
+<li><a class="text-muted" href="/api/profile">Profile</a></li>
+</ul>
+<ul class="list-unstyled text-small">
+<li><a class="text-muted" href="/api/project">Project</a></li>
+</ul>
+</div>
+
+
 
 {% endblock %}
+
