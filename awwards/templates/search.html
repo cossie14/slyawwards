@@ -14,14 +14,18 @@
       <img style="width:50%; border-radius:25px " src="{{post.project_pic.url}}" class="card-img-top img-fluid" alt="dummy" width="100%">
       <div class="card-img-overlay">
         <br>
+        
         <br>
         <br>
-        <br>
-          <a href="/project/{{user.id}}"><p class="card-text ">Rate <br>Visit site  </p></a>
+          <a href="{{post.project_url}}"><button type="button"class="btn btn-outline-warning">Rate</button></a>
+           <br>
+           <br>
+           <br>
+          <a href="{{post.project_url}}"><button type="button"class="btn btn-outline-warning">View project</button></a> <br>
+          
       </div>
 
-  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"style="padding:0 4px;flex: 25%;">
-  </div>
+
 </div>
 
 
@@ -63,9 +67,9 @@
     </div><br>
       <div class="row">
         <div class="card" style="width: 18rem;">
-          <!-- <div class="card-header">
+          <div class="card-header">
             Stories
-          </div> -->
+          </div>
 
           <ul class="list-group list-group-flush hide">
             {% for user in users %}
@@ -78,7 +82,7 @@
       <div class="row">
         <div class="card" style="width: 18rem;">
           <div class="card-header">
-            <!-- Explore More -->
+            Explore More
           </div>
           <ul class="list-group list-group-flush hide">
             {% for user in views %}
@@ -88,38 +92,39 @@
           </ul>
         </div>
       </div>
+    </div>
   </div>
 
 </div>
 
 
+<br>
+<br>
+<br>
 
 
 <style>
-.footer {
-position: ;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: darkblue;
-color: white;
-text-align: center;
-}
-</style>
-
-
-
-<div class="footer">
-<ul class="list-unstyled text-small">
-  <h1>APIs</h1>
-<li><a class="text-muted" href="/api/profile">Profile</a></li>
-</ul>
-<ul class="list-unstyled text-small">
-<li><a class="text-muted" href="/api/project">Project</a></li>
-</ul>
-</div>
-
+  .footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color:lightblue;
+     color:black;
+     text-align: center;
+  }
+  </style>
+  
+  
+  <div class="footer">
+    <ul class="list-unstyled text-small">
+        <h1>APIs</h1>
+      <li><a class="text-muted" href="/api/profile">Profile</a></li>
+      <li><a class="text-muted" href="/api/project">Project</a></li>
+    </ul>
+  
+  </div>
+  
 
 
 {% endblock %}
-
