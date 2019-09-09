@@ -27,12 +27,12 @@ The behaviors implemented include;
 7 Enjoy!
 
 ## Technologies used
-1 Python vs3.6
-2 Bootstrap
-3 Django
-4 PostgreSQL Database
-5 JavaScript
-6 WhiteNoise
+1 Python vs3.6<br>
+2 Bootstrap<br>
+3 Django<br>
+4 PostgreSQL Database<br>
+5 JavaScript<br>
+6 WhiteNoise<br>
 7 CSS
 
 ## License
